@@ -9,7 +9,7 @@ import About from "./Components/About";
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes as Switch,
   Route
 } from "react-router-dom";
 
@@ -45,20 +45,16 @@ function App() {
   }
   return (
     <>
-    <Router>
+    
     <Navbar title="TextUtils" item1="Home" item2="About" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert}/>
     <div className="container">
       <Switch>
-        <Route exact path="/">
-          <TextForm heading="Word Counter" mode={mode} /*showAlert={showAlert}*/ style={style}/>
-        </Route>
-        <Route exact path="/about">
-          <About/>
-        </Route>
+        <Route path="/" element={<TextForm heading="Word Counter" mode={mode} /*showAlert={showAlert}*/ style={style}/>} />
+        <Route path="/about" element={<About />} /> 
       </Switch>
     </div>
-    </Router>
+    
     </>
   );
 }
